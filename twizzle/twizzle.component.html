@@ -1,0 +1,10 @@
+<mat-accordion >
+  <mat-expansion-panel [expanded]="expanded" [hideToggle]="hideToggle" [disabled]="disable">
+    <mat-expansion-panel-header (opened)="true">
+      <mat-panel-title>
+        {{title}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <lp-tile [dataRow]="row" [hideCheckbox]="true" *ngFor="let row of rows" [isCheckable]="isCheckable"></lp-tile>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,0 +1,15 @@
+<div>
+  {{tablePref.name}}
+  <section>
+    <div>
+      <mat-checkbox [checked]="tablePref.hidden">Hidden</mat-checkbox>
+    </div>
+    <div>
+      <mat-checkbox [checked]="tablePref.collapsable">Collapsed</mat-checkbox>
+    </div>
+    <div *ngFor="let fieldPref of tablePref.fieldPreferences">
+      <lp-field-preference [fieldPref]="fieldPref">
+      </lp-field-preference>
+    </div>
+  </section>
+</div>

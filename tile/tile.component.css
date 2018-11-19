@@ -1,0 +1,10 @@
+.tile{
+    background: teal;
+    margin: 3px;
+}
+
+.details > * {
+  width: 100%;
+  display: flex;
+  flex-direction: column
+}

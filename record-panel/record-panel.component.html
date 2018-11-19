@@ -1,0 +1,44 @@
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="panelMode=1"><mat-icon>menu</mat-icon></button>
+    <h1 class="example-app-name">Record Panel</h1>
+    <button mat-icon-button class="buttonAttachments" (click)="panelMode=2"><mat-icon>attach_file</mat-icon></button>
+    <button mat-icon-button class="buttonOrphans" (click)="panelMode=3"><mat-icon>report</mat-icon></button>
+    <button mat-icon-button class="buttonUserPref" (click)="panelMode=4"><mat-icon>build</mat-icon></button>
+
+  </mat-toolbar>
+  <mat-sidenav-container class="example-sidenav-container">
+
+    <!-- Search Panel -->
+    <mat-sidenav #snav [mode]="push" [opened]="leftIsOpen">
+      <lp-search-bar></lp-search-bar>
+      <mat-nav-list *ngIf="queryResults!=null">
+        <lp-twizzle mat-list-item routerLink="." [disable]="false" [expanded]="true" [hideToggle]="false" *ngIf="queryResults.length>0"
+          title="Search Results" [rows]="queryResults"></lp-twizzle>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- Attachment Panel -->
+    <mat-sidenav #snav2 [mode]="side" class="sidenav2" align="end" [opened]="rightIsOpen">
+      <mat-nav-list *ngIf="panelMode==2">
+        <lp-twizzle mat-list-item routerLink="." [disable]="true" [expanded]="true" [hideToggle]="true" title="Attachments" [isCheckable]="false" [rows]="attachments"></lp-twizzle>
+      </mat-nav-list>
+
+      <!-- Orphans Panel -->
+      <mat-nav-list *ngIf="panelMode==3">
+        <lp-twizzle mat-list-item routerLink="." [disable]="true" [expanded]="true" [hideToggle]="true" title="Orphans" [isCheckable]="false"  [rows]="orphans.rows"></lp-twizzle>
+      </mat-nav-list>
+
+      <!-- UserProfile -->
+      <mat-nav-list *ngIf="panelMode===4">
+        <lp-user-profile [userProf]="userProfile">
+        </lp-user-profile>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <lp-twizzle mat-list-item routerLink="." *ngIf="selections.length>0" title="Your Selections" [expanded]="true" [rows]="selections"></lp-twizzle>
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+</div>

@@ -1,0 +1,9 @@
+<mat-form-field class="container">
+  <input matInput type="text" placeholder="Search" (keyup.enter)="onEnter($event)" [(ngModel)]="searchHint"/>
+  <button mat-button *ngIf="searchHint" matSuffix mat-icon-button aria-label="Clear" (click)="searchHint=''">
+    <mat-icon>close</mat-icon>
+  </button>
+  <button *ngIf="searchHint"  (click)="startSearch($event)" mat-button matSuffix mat-icon-button aria-label="Go">
+    <mat-icon>forward</mat-icon>
+  </button>
+</mat-form-field>

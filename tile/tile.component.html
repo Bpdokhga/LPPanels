@@ -1,0 +1,18 @@
+<mat-card class="tile">
+    <mat-card-title>
+        <div>
+             <mat-checkbox [checked]="isChecked" (change)="isChecked = !isChecked" *ngIf="isCheckable==true">
+                {{dataRow.titleValue.value}}
+            </mat-checkbox> 
+            <div *ngIf="isCheckable!=true">{{dataRow.titleValue.value}}</div>
+            
+        </div>
+    </mat-card-title>
+
+    <mat-card-content class="details" *ngIf="dataRow.detailValues!=null && dataRow.detailValues.length>0">
+        <mat-form-field *ngFor="let detail of dataRow.detailValues" >
+            <!-- <input matInput [placeholder]="dataRow.column.label" [readonly]="true" [value]="titleValue"> -->
+             <input matInput [placeholder]="dataRow.table.FindColumn(detail.name).label" [readonly]="true" [value]="detail.value"> 
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>
